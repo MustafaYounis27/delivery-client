@@ -33,8 +33,8 @@
             android:name=".ui.map.MapsActivity"
             android:label="@string/title_activity_maps"></activity>
         <activity android:name=".ui.login.LoginActivity" />
-        <activity android:name=".ui.splash_screen.SplashScreen" />
-        <activity android:name=".ui.home_page.HomePageActivity">
+        <activity android:name=".ui.home_page.HomePageActivity" />
+        <activity android:name=".ui.splash_screen.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
