@@ -1,4 +1,4 @@
-package com.delevery.metyassara.ui.home_page;
+package com.delevery.metyassara.ui.home_page.HomeFragments;
 
 import androidx.fragment.app.Fragment;
 
