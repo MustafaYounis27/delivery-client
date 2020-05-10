@@ -10,13 +10,32 @@
     android:id="@+id/drawer_layout"
     >
 
-    <fragment
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        android:id="@+id/nav_host_fragment"
+    <!--
+        RelativeLayout to show imageView on each fragment
+        in HomePageActivity
+        -->
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:defaultNavHost="true"
-        app:navGraph="@navigation/nav_graph" />
+        >
+
+        <fragment
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:id="@+id/nav_host_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/nav_graph" />
+
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_margin="15dp"
+            android:src="@drawable/ic_user_account"
+            android:onClick="openDrawer"
+            />
+
+    </RelativeLayout>
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
