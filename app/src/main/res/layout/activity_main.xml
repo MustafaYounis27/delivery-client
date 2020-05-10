@@ -11,7 +11,7 @@
     >
 
     <!--
-        RelativeLayout to show imageView on each fragment
+        RelativeLayout  to show imageView on each fragment
         in HomePageActivity
         -->
     <RelativeLayout
