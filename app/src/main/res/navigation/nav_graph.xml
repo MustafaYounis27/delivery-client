@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.delevery.metyassara.ui.home_page.HomeFragment"
+        android:label="HomeFragment" />
+
+    <fragment
+        android:id="@+id/my_information"
+        android:name="com.delevery.metyassara.ui.home_page.MyInformationFragment"
+        android:label="MyInformationFragment" />
+    <fragment
+        android:id="@+id/my_orders"
+        android:name="com.delevery.metyassara.ui.home_page.MyOrdersFragment"
+        android:label="MyOrdersFragment" />
+
+</navigation>
