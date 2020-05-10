@@ -35,4 +35,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-database:19.2.1'
     //implement firebase storage
     implementation 'com.google.firebase:firebase-storage:19.1.1'
+
+    //CoordinatorLayout
+    implementation 'com.google.android.material:material:1.1.0'
 }
