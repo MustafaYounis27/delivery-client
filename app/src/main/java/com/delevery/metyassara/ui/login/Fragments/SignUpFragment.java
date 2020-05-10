@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment;
 import com.delevery.metyassara.R;
 
 public class SignUpFragment extends Fragment {
-    // 1- define loginFragment View
+    // 1- define signupFragment View
     private View signupFragment;
     
     //2- override On Create view to inflate signupFragment View
@@ -22,7 +22,7 @@ public class SignUpFragment extends Fragment {
     (@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         //3- assign signupFragment view with view that return From inflate object that need (View Layout , Root)
         // to attach with layout
-        signupFragment = inflater.inflate(R.layout.login_fragment,null);
+        signupFragment = inflater.inflate(R.layout.signup_fragment,null);
         return signupFragment;
     }
     //4- override On activity Created to inflate view in LoginActivity
