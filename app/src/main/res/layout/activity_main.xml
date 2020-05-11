@@ -11,7 +11,7 @@
     >
 
     <!--
-        RelativeLayout  to show imageView on each fragment
+        RelativeLayout to show imageView on each fragment
         in HomePageActivity
         -->
     <RelativeLayout
@@ -44,6 +44,7 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:menu="@menu/drawer_menu"
+        app:headerLayout="@layout/drawer_header"
         />
 
 </androidx.drawerlayout.widget.DrawerLayout>
