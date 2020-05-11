@@ -10,12 +10,13 @@
         android:label="HomeFragment" />
 
     <fragment
-        android:id="@+id/my_information"
-        android:name="com.delevery.metyassara.ui.home_page.HomeFragments.MyInformationFragment"
-        android:label="MyInformationFragment" />
-    <fragment
         android:id="@+id/my_orders"
         android:name="com.delevery.metyassara.ui.home_page.HomeFragments.MyOrdersFragment"
         android:label="MyOrdersFragment" />
+
+    <fragment
+        android:id="@+id/my_information"
+        android:name="com.delevery.metyassara.ui.home_page.HomeFragments.MyInformationFragment"
+        android:label="MyInformationFragment" />
 
 </navigation>
