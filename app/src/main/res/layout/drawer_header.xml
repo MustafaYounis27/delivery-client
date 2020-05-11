@@ -12,7 +12,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello, Mustafa"
+        android:text="Hello, metyassara!"
         android:textSize="30sp"
         android:textColor="@android:color/black"
         />
