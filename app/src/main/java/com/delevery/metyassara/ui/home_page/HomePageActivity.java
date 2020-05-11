@@ -9,6 +9,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.delevery.metyassara.R;
 import com.google.android.material.navigation.NavigationView;
@@ -16,7 +17,7 @@ import com.google.android.material.navigation.NavigationView;
 public class HomePageActivity extends AppCompatActivity
 {
 
-    DrawerLayout drawerLayout;
+    private DrawerLayout drawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -24,8 +25,8 @@ public class HomePageActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         setupDrawer ();
+
     }
 
     private void setupDrawer()

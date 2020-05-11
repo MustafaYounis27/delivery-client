@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,7 +14,8 @@ import com.delevery.metyassara.R;
 
 public class HomeFragment extends Fragment
 {
-    View homeFragment;
+    private View homeFragment;
+    private ImageView userSetting;
 
     @Nullable
     @Override
@@ -27,6 +29,16 @@ public class HomeFragment extends Fragment
     public void onActivityCreated(@Nullable Bundle savedInstanceState)
     {
         super.onActivityCreated ( savedInstanceState );
+
+        initViews();
+
+    }
+
+    private void initViews()
+    {
+        //to visible image icon on screen
+        userSetting=getActivity ().findViewById ( R.id.user_setting );
+        userSetting.setVisibility ( View.VISIBLE );
 
     }
 

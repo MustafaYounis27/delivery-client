@@ -28,6 +28,7 @@
             app:navGraph="@navigation/nav_graph" />
 
         <ImageView
+            android:id="@+id/user_setting"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_margin="15dp"
