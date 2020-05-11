@@ -1,22 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FCBDAC"
-    >
-
-    <TextView
-        style="@style/TextAppearance.AppCompat.Body2"
+    android:orientation="vertical"
+    android:background="#fff">
+    <com.github.florent37.shapeofview.shapes.ArcView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:text="metyassara"
-        android:textColor="#2E787B"
-        android:textSize="50sp"
-        android:textStyle="italic" />
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:elevation="4dp"
+        app:shape_arc_cropDirection="outside"
+        app:shape_arc_height="20dp"
+        app:shape_arc_position="bottom">
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:background="#FCBDAC"
+            tools:ignore="Suspicious0dp">
+
+            <TextView
+                style="@style/TextAppearance.AppCompat.Body2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="metyassara"
+                android:textColor="#2E787B"
+                android:textSize="50sp"
+                android:textStyle="italic" />
+        </FrameLayout>
+    </com.github.florent37.shapeofview.shapes.ArcView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:text="Order now"
+        android:gravity="center"
+        android:textSize="30sp"
+        android:textColor="#009688"
+        android:padding="10dp"
+        android:textStyle="bold"
+        android:elevation="20dp"/>
+</LinearLayout>
