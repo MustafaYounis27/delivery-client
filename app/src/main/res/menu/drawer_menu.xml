@@ -1,16 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item
-        android:id="@+id/my_orders"
-        android:title="My orders"
-        android:icon="@drawable/my_orders"
-        />
+    <item android:title="Account"
+        android:id="@+id/account"
+        >
+        <menu>
+            <item
+                android:id="@+id/my_orders"
+                android:title="My orders"
+                android:icon="@drawable/my_orders"
+                />
+
+            <item
+                android:id="@+id/my_information"
+                android:title="My information"
+                android:icon="@drawable/my_information"
+                />
+        </menu>
+    </item>
 
     <item
-        android:id="@+id/my_information"
-        android:title="My information"
-        android:icon="@drawable/my_information"
+        android:id="@+id/logout"
+        android:title="log out"
+        android:icon="@drawable/logout_icon"
         />
-
 </menu>

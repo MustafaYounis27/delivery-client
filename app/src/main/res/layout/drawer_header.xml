@@ -1,40 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="200dp"
-    >
+    android:layout_height="176dp"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:orientation="vertical"
+        android:layout_height="176dp"
         android:background="#FCBDAC"
-        android:padding="15dp"
-        android:gravity="center_vertical"
-        >
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="16dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hello, metyassara!"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="@android:color/black"
-            />
-
+        <ImageView
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:src="@drawable/metyassara_logo" />
     </LinearLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Account"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="15dp"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:textColor="@android:color/black"
-        />
-
 </LinearLayout>
