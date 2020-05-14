@@ -1,7 +1,12 @@
 package com.delevery.metyassara.model;
 
-public class UserModel {
+import java.io.Serializable;
+
+public class UserModel implements Serializable {
     private String ImgeUrl,UserName,uid,phone;
+
+    public UserModel() {
+    }
 
     public UserModel(String imgeUrl, String userName, String uid, String phone) {
         ImgeUrl = imgeUrl;
