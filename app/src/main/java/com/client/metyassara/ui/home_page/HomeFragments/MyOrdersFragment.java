@@ -1,4 +1,4 @@
-package com.delevery.metyassara.ui.home_page.HomeFragments;
+package com.client.metyassara.ui.home_page.HomeFragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.delevery.metyassara.R;
+import com.client.metyassara.R;
 
 public class MyOrdersFragment extends Fragment
 {

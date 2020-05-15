@@ -1,16 +1,15 @@
-package com.delevery.metyassara.ui.splash_screen;
+package com.client.metyassara.ui.splash_screen;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
-import com.delevery.metyassara.R;
-import com.delevery.metyassara.ui.login.LoginActivity;
+import com.client.metyassara.R;
+import com.client.metyassara.ui.login.LoginActivity;
 
 public class SplashScreen extends AppCompatActivity {
 

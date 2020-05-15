@@ -1,12 +1,12 @@
-package com.delevery.metyassara.ui.login;
+package com.client.metyassara.ui.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
 
-import com.delevery.metyassara.R;
-import com.delevery.metyassara.ui.login.Fragments.LoginFragment;
+import com.client.metyassara.R;
+import com.client.metyassara.ui.login.Fragments.LoginFragment;
 
 public class LoginActivity extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package com.delevery.metyassara;
+package com.client.metyassara;
 
 import org.junit.Test;
 

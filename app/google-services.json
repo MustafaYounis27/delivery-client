@@ -1,79 +1,42 @@
 {
   "project_info": {
-    "project_number": "201283411919",
-    "firebase_url": "https://metyassara-898fa.firebaseio.com",
-    "project_id": "metyassara-898fa",
-    "storage_bucket": "metyassara-898fa.appspot.com"
+    "project_number": "338350271756",
+    "firebase_url": "https://metyassara-95bb0.firebaseio.com",
+    "project_id": "metyassara-95bb0",
+    "storage_bucket": "metyassara-95bb0.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:201283411919:android:a03c75d68bb366aa49bcba",
+        "mobilesdk_app_id": "1:338350271756:android:74f3856a47c5ed24c6ad29",
         "android_client_info": {
-          "package_name": "com.delevery.metyassara"
+          "package_name": "com.client.metyassara"
         }
       },
       "oauth_client": [
         {
-          "client_id": "201283411919-nfjtd8cfbr7ko6457jbicp3lja57nie8.apps.googleusercontent.com",
+          "client_id": "338350271756-qfdukmfed2c2rorludsmnqbvtem8ee5g.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.delevery.metyassara",
+            "package_name": "com.client.metyassara",
             "certificate_hash": "87ea3e51bb20a5c5a08c4e25f9ce470608fac41d"
           }
         },
         {
-          "client_id": "201283411919-bebtif3q91g9cavu0vd7f3oo1dd88n8n.apps.googleusercontent.com",
+          "client_id": "338350271756-en4gubinemurb2e8sk7gu8jq20c01l0j.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBRf9j4we9BsecGeHMvNFmIsGN_nN5902I"
+          "current_key": "AIzaSyBEfGblNWGWrKipbmTLzPaCAks_cBZXKmk"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "201283411919-bebtif3q91g9cavu0vd7f3oo1dd88n8n.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:201283411919:android:cd59210152d8e4f849bcba",
-        "android_client_info": {
-          "package_name": "com.example.metyassara"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "201283411919-825dm257rac45h37t12eqpcvauerlpl5.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.metyassara",
-            "certificate_hash": "87ea3e51bb20a5c5a08c4e25f9ce470608fac41d"
-          }
-        },
-        {
-          "client_id": "201283411919-bebtif3q91g9cavu0vd7f3oo1dd88n8n.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBRf9j4we9BsecGeHMvNFmIsGN_nN5902I"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "201283411919-bebtif3q91g9cavu0vd7f3oo1dd88n8n.apps.googleusercontent.com",
+              "client_id": "338350271756-en4gubinemurb2e8sk7gu8jq20c01l0j.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

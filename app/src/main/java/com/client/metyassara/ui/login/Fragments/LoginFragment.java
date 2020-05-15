@@ -1,4 +1,4 @@
-package com.delevery.metyassara.ui.login.Fragments;
+package com.client.metyassara.ui.login.Fragments;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -15,8 +15,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.delevery.metyassara.R;
-import com.delevery.metyassara.ui.home_page.HomePageActivity;
+import com.client.metyassara.R;
+import com.client.metyassara.ui.home_page.HomePageActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;

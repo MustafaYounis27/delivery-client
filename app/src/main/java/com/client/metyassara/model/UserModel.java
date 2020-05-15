@@ -1,4 +1,4 @@
-package com.delevery.metyassara.model;
+package com.client.metyassara.model;
 
 import java.io.Serializable;
 

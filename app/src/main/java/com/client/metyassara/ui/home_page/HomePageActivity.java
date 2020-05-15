@@ -1,4 +1,4 @@
-package com.delevery.metyassara.ui.home_page;
+package com.client.metyassara.ui.home_page;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -11,7 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.delevery.metyassara.R;
+import com.client.metyassara.R;
 import com.google.android.material.navigation.NavigationView;
 
 public class HomePageActivity extends AppCompatActivity
