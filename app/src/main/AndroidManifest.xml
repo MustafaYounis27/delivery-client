@@ -35,8 +35,8 @@
             android:name="com.client.metyassara.ui.map.MapsActivity"
             android:label="@string/title_activity_maps"></activity>
         <activity android:name="com.client.metyassara.ui.login.LoginActivity" />
-        <activity android:name="com.client.metyassara.ui.home_page.HomePageActivity" />
-        <activity android:name="com.client.metyassara.ui.splash_screen.SplashScreen">
+        <activity android:name="com.client.metyassara.ui.splash_screen.SplashScreen" />
+        <activity android:name="com.client.metyassara.ui.home_page.HomePageActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
