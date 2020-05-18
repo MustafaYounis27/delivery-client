@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.SearchView;
@@ -49,8 +50,7 @@ public class RestaurantsFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return view = inflater.inflate(R.layout.fragment_restaurants, container, false);
     }
@@ -60,6 +60,32 @@ public class RestaurantsFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         IntialRecyclerView();
         GetRestaurantFromFireBase();
+
+        initViews();
+    }
+
+    private void initViews()
+    {
+        //when click otherPlace will replace OtherPlaceFragment instead of RestaurantFragment
+        Button otherPlace = view.findViewById ( R.id.other_place );
+        otherPlace.setOnClickListener ( new View.OnClickListener () {
+            @Override
+            public void onClick(View v)
+            {
+
+                loadFragment();
+            }
+        } );
+    }
+
+    private void loadFragment()
+    {
+        requireActivity ()
+                .getSupportFragmentManager ()
+                .beginTransaction ()
+                .replace ( R.id.order_container,new OtherPlaceFragment () )
+                .addToBackStack ( null )
+                .commit ();
     }
 
     private void GetRestaurantFromFireBase() {

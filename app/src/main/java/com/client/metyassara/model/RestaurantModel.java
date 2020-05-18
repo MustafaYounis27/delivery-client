@@ -5,7 +5,7 @@ public class RestaurantModel {
     private float rate;
     private String restaurant_name,sub_title,image_url;
 
-    public RestaurantModel(double lat, double longt, int rate, String restaurant_name, String sub_title, String image_url) {
+    public RestaurantModel(double lat, double longt, float rate, String restaurant_name, String sub_title, String image_url) {
         this.lat = lat;
         this.longt = longt;
         this.rate = rate;
