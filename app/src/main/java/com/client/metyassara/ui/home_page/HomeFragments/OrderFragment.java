@@ -34,7 +34,6 @@ public class OrderFragment extends Fragment
                 .beginTransaction ()
                 .add ( R.id.order_container,new HomeFragment () )
                 .commit ();
-
     }
 
 }
