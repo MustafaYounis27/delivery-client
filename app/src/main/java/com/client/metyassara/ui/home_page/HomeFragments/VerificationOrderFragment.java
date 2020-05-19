@@ -26,6 +26,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.client.metyassara.R;
@@ -58,6 +59,7 @@ public class VerificationOrderFragment extends Fragment {
     private Button ConfirmButton;
     private SharedPreferences preferences;
     private SharedPreferences.Editor editor;
+    private ImageView back;
     //get user id
     private String user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
@@ -122,6 +124,13 @@ public class VerificationOrderFragment extends Fragment {
                 Verification();
             }
         });
+        back = view.findViewById(R.id.back_to_restaurant);
+        back.setOnClickListener ( new View.OnClickListener () {
+            @Override
+            public void onClick(View v) {
+                requireActivity ().onBackPressed ();
+            }
+        } );
     }
 
     private void GetLocation() {
