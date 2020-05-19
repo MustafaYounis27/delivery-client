@@ -1,13 +1,63 @@
 package com.client.metyassara.model;
 
 public class RequestOderModel {
-    private String restaurant_name,addreasr,phone,describe_order;
+    private String restaurant_name, addreasr, phone, describe_order, client_id, delevery_id, date, status;
+    private double cash;
 
-    public RequestOderModel(String restaurant_name, String addreasr, String phone, String describe_order) {
+    public RequestOderModel(String restaurant_name, String addreasr, String phone, String describe_order, String client_id, String delevery_id, String date, String status, double cash) {
         this.restaurant_name = restaurant_name;
         this.addreasr = addreasr;
         this.phone = phone;
         this.describe_order = describe_order;
+        this.client_id = client_id;
+        this.delevery_id = delevery_id;
+        this.date = date;
+        this.status = status;
+        this.cash = cash;
+    }
+
+    public double getCash() {
+        return cash;
+    }
+
+    public void setCash(double cash) {
+        this.cash = cash;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+
+    public RequestOderModel() {
+    }
+
+    public String getClient_id() {
+        return client_id;
+    }
+
+    public void setClient_id(String client_id) {
+        this.client_id = client_id;
+    }
+
+    public String getDelevery_id() {
+        return delevery_id;
+    }
+
+    public void setDelevery_id(String delevery_id) {
+        this.delevery_id = delevery_id;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public String getRestaurant_name() {

@@ -42,7 +42,8 @@ public class RestaurantsFragment extends Fragment {
     private RecyclerView raecyclerView;
     private List<RestaurantModel> restaurantModels = new ArrayList<>();
     private RestaurantAdapter restaurantAdapter;
-
+    // i make it public static to can get Restaurant_name in confirm_order_fragment
+    public static String Restaurant_name;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -177,8 +178,8 @@ public class RestaurantsFragment extends Fragment {
 
             //get image_url and display in image view by useing picasso
             Picasso.get().load(restaurantModel.getImage_url()).into(holder.Restaurant_image);
-
-            holder.Restaurant_title.setText(restaurantModel.getRestaurant_name());
+            Restaurant_name=restaurantModel.getRestaurant_name();
+            holder.Restaurant_title.setText(Restaurant_name);
             holder.Restaurant_sub_title.setText(restaurantModel.getSub_title());
             holder.Restaurant_RatingBar.setRating(restaurantModel.getRate());
             //on click item

@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -17,6 +18,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,9 +27,12 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.client.metyassara.R;
+import com.client.metyassara.model.RequestOderModel;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -35,6 +40,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -46,6 +54,10 @@ public class VerificationOrderFragment extends Fragment {
     private FusedLocationProviderClient fusedLocationClient;
     private EditText describe_order, phone_in_requestordr, address_field, building, floor;
     private Button ConfirmButton;
+    private SharedPreferences preferences;
+    private SharedPreferences.Editor editor;
+    //get user id
+    private String user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -63,15 +75,20 @@ public class VerificationOrderFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        //local data base
+        IntialSharedPreferences();
         IntialDialog();
         IntialViews();
         GetLocation();
         GetPhoneNumber();
     }
 
+    private void IntialSharedPreferences() {
+        preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        editor = preferences.edit();
+    }
+
     private void GetPhoneNumber() {
-        //get user id
-        String user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
         //get number from database
         FirebaseDatabase.getInstance().getReference().child("users").child(user_id).child("phone").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -213,5 +230,29 @@ public class VerificationOrderFragment extends Fragment {
             building.requestFocus();
             return;
         }
+        //get current date
+        String currentDate = new SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.getDefault()).format(new Date());
+
+        RequestOderModel requestOderModel = new RequestOderModel(RestaurantsFragment.Restaurant_name, address, phone_string, describe_order_string, user_id, "", currentDate,"search",0);
+        //upload in data base
+        dialog.show();
+        FirebaseDatabase.getInstance().getReference().child("requests").child(user_id).setValue(requestOderModel).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    dialog.dismiss();
+                    String currentordertime = new SimpleDateFormat(" hh:mm").format(new Date());
+                    Calendar calendar = Calendar.getInstance(); //A calendar set to the current time
+                    calendar.add(Calendar.MINUTE, 40); //Add one hour
+                    editor.putString("order time",currentordertime);
+                    editor.putInt("end hour",calendar.get(Calendar.HOUR));
+                    editor.putInt("end minute",calendar.get(Calendar.MINUTE));
+                    editor.commit();
+                } else {
+                    dialog.dismiss();
+                    Toast.makeText(context, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 }
