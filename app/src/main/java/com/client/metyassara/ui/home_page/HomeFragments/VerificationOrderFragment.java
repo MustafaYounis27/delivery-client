@@ -17,6 +17,8 @@ import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
@@ -147,6 +149,7 @@ public class VerificationOrderFragment extends Fragment {
             }
         } else {
             // Permission has already been granted
+            dialog.show();
             fusedLocationClient = LocationServices.getFusedLocationProviderClient(context);
             fusedLocationClient.getLastLocation().addOnSuccessListener(new OnSuccessListener<Location>() {
                 @Override
@@ -155,6 +158,9 @@ public class VerificationOrderFragment extends Fragment {
                     if (location != null) {
                         //get get complete address from latitude and longitude
                         GetAddrese(location.getLatitude(), location.getLongitude());
+                    }
+                    else {
+                        dialog.dismiss();
                     }
                 }
             });
@@ -165,7 +171,6 @@ public class VerificationOrderFragment extends Fragment {
         Geocoder geocoder;
         List<Address> addresses;
         geocoder = new Geocoder(context, Locale.getDefault());
-
         try {
             addresses = geocoder.getFromLocation(latitude, longitude, 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
             // get complete address from latitude and longitude
@@ -189,7 +194,7 @@ public class VerificationOrderFragment extends Fragment {
         dialog = new ProgressDialog(context);
         dialog.setMessage("plese wait...");
         dialog.setCancelable(false);
-        dialog.show();
+
     }
 
     private void Verification() {
@@ -248,6 +253,11 @@ public class VerificationOrderFragment extends Fragment {
                     editor.putInt("end hour",calendar.get(Calendar.HOUR));
                     editor.putInt("end minute",calendar.get(Calendar.MINUTE));
                     editor.commit();
+                    OrderTrackingFragment orderTrackingFragment=new OrderTrackingFragment();
+                    FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.order_container, orderTrackingFragment);
+                    fragmentTransaction.commit();
                 } else {
                     dialog.dismiss();
                     Toast.makeText(context, task.getException().getMessage(), Toast.LENGTH_SHORT).show();

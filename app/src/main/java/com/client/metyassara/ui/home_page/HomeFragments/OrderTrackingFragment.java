@@ -148,6 +148,8 @@ public class OrderTrackingFragment extends Fragment {
             case "Rating":
                 mStepView.go(5, true);
                 // statusview.setText("Now your delivery is on your");
+                editor.putString("in order", "no");
+                editor.commit();
                 break;
         }
     }
@@ -178,6 +180,9 @@ public class OrderTrackingFragment extends Fragment {
         StartOderTime = preferences.getString("order time", "");
         EndOrderHour = preferences.getInt("end hour", 0);
         EndOrderMiute = preferences.getInt("end minute", 0);
+
+        editor.putString("in order", "in order");
+        editor.commit();
     }
 
     private void IntialCircularBrogressBar() {
