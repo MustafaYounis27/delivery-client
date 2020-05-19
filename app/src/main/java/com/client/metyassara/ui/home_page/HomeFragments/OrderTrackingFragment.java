@@ -54,13 +54,14 @@ public class OrderTrackingFragment extends Fragment {
     private CircularProgressBar circularProgressBar;
     private SharedPreferences preferences;
     private SharedPreferences.Editor editor;
-    private String StartOderTime,my_id,status;
+    private String StartOderTime, my_id, status;
     private int EndOrderHour, EndOrderMiute;
-    private TextView textminuteleft,statusview;
+    private TextView textminuteleft, statusview;
     private RequestOderModel requestOderModel;
     private Button next_to_rate;
     private ImageView imageView;
     Animation animation;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,7 +80,7 @@ public class OrderTrackingFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         IntialSharedPreferences();
         IntialViews();
-        imageView=view.findViewById(R.id.rrrr);
+        imageView = view.findViewById(R.id.rrrr);
         TranslateAnimation animation = new TranslateAnimation(0.0f, 800.0f,
                 0.0f, 100.0f);          //  new TranslateAnimation(xFrom,xTo, yFrom,yTo)
         animation.setDuration(3000);  // animation duration
@@ -89,7 +90,7 @@ public class OrderTrackingFragment extends Fragment {
         imageView.startAnimation(animation);
 
         ItialStepView();
-        status=preferences.getString("status", "");
+        status = preferences.getString("status", "");
         SetStep(status);
         GetStepFromDataBase();
         IntialCircularBrogressBar();
@@ -104,12 +105,12 @@ public class OrderTrackingFragment extends Fragment {
         next_to_rate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                HashMap<String,Object> hashMap=new HashMap<>();
-                hashMap.put("status","Rating");
+                HashMap<String, Object> hashMap = new HashMap<>();
+                hashMap.put("status", "Rating");
                 FirebaseDatabase.getInstance().getReference().child("in process").child(my_id).updateChildren(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful()){
+                        if (task.isSuccessful()) {
                             next_to_rate.setVisibility(View.GONE);
                         }
                     }
@@ -119,10 +120,10 @@ public class OrderTrackingFragment extends Fragment {
     }
 
     private void SetStep(String s) {
-        if(s.isEmpty()){
+        if (s.isEmpty()) {
             return;
         }
-        switch (s){
+        switch (s) {
             case "search":
                 mStepView.go(0, true);
                 statusview.setText("No Search For Delivery");
@@ -146,22 +147,23 @@ public class OrderTrackingFragment extends Fragment {
                 break;
             case "Rating":
                 mStepView.go(5, true);
-               // statusview.setText("Now your delivery is on your");
+                // statusview.setText("Now your delivery is on your");
                 break;
         }
     }
 
     private void GetStepFromDataBase() {
-        my_id= FirebaseAuth.getInstance().getCurrentUser().getUid();
+        my_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
         FirebaseDatabase.getInstance().getReference().child("in process").child(my_id).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                requestOderModel=dataSnapshot.getValue(RequestOderModel.class);
-                status=requestOderModel.getStatus();
-                editor.putString("status",status);
+                requestOderModel = dataSnapshot.getValue(RequestOderModel.class);
+                status = requestOderModel.getStatus();
+                editor.putString("status", status);
                 editor.commit();
                 SetStep(status);
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
@@ -174,8 +176,8 @@ public class OrderTrackingFragment extends Fragment {
         editor = preferences.edit();
         //get start order time from shared preference
         StartOderTime = preferences.getString("order time", "");
-        EndOrderHour =6; //preferences.getInt("end hour", 0);
-        EndOrderMiute = 53;//preferences.getInt("end minute", 0);
+        EndOrderHour = preferences.getInt("end hour", 0);
+        EndOrderMiute = preferences.getInt("end minute", 0);
     }
 
     private void IntialCircularBrogressBar() {
@@ -202,8 +204,12 @@ public class OrderTrackingFragment extends Fragment {
         final int timeinminutes = 40 * 60;
         CountDownTimer timer = new CountDownTimer(timeinminutes * 1000, 1000) {
             int minuteleft;
+            int check = preferences.getInt("check", 0);
 
             public void onTick(long millisUntilFinished) {
+                if (check == 11) {
+                    return;
+                }
                 Calendar currenttime = Calendar.getInstance();
                 if (currenttime.get(Calendar.HOUR) < EndOrderHour) {
                     int leftminute = 60 - (currenttime.get(Calendar.MINUTE));
@@ -211,7 +217,10 @@ public class OrderTrackingFragment extends Fragment {
                 } else {
                     minuteleft = EndOrderMiute - currenttime.get(Calendar.MINUTE);
                 }
-                if (minuteleft < 0) {
+                // if time left ended and save in shared pref to check are was end or no
+                if (minuteleft == 0) {
+                    editor.putInt("check", 11);
+                    editor.commit();
                     return;
                 }
                 textminuteleft.setText(minuteleft + "");
@@ -219,7 +228,6 @@ public class OrderTrackingFragment extends Fragment {
             }
 
             public void onFinish() {
-
             }
         }.start();
     }
