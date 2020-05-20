@@ -2,7 +2,9 @@ package com.client.metyassara.ui.home_page.HomeFragments;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,7 +49,8 @@ public class OtherPlaceFragment extends Fragment
     private Button verification;
 
     private float rate;
-
+    private SharedPreferences preferences;
+    private SharedPreferences.Editor editor;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
@@ -61,6 +64,7 @@ public class OtherPlaceFragment extends Fragment
     {
         super.onActivityCreated ( savedInstanceState );
 
+        IntialSharedPreferences();
         initFirebase();
         initDialog();
 
@@ -139,6 +143,8 @@ public class OtherPlaceFragment extends Fragment
                     return;
                 }
 
+                editor.putString("Restaurant_name",restaurantName);
+                editor.commit();
                 enterDialog.show ();
                 checkRestaurants(restaurantName,restaurantSubTitle,rate);
 
@@ -241,5 +247,9 @@ public class OtherPlaceFragment extends Fragment
     {
         auth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference();
+    }
+    private void IntialSharedPreferences() {
+        preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        editor = preferences.edit();
     }
 }

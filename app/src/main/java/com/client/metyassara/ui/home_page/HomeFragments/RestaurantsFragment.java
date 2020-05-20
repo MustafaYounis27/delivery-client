@@ -2,6 +2,7 @@ package com.client.metyassara.ui.home_page.HomeFragments;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,6 +44,8 @@ public class RestaurantsFragment extends Fragment {
     private RecyclerView raecyclerView;
     private List<RestaurantModel> restaurantModels = new ArrayList<>();
     private RestaurantAdapter restaurantAdapter;
+    private SharedPreferences preferences;
+    private SharedPreferences.Editor editor;
     // i make it public static to can get Restaurant_name in confirm_order_fragment
     public static String Restaurant_name;
     @Override
@@ -61,7 +65,7 @@ public class RestaurantsFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         IntialRecyclerView();
         GetRestaurantFromFireBase();
-
+        IntialSharedPreferences();
         initViews();
     }
 
@@ -179,6 +183,8 @@ public class RestaurantsFragment extends Fragment {
             //get image_url and display in image view by useing picasso
             Picasso.get().load(restaurantModel.getImage_url()).into(holder.Restaurant_image);
             Restaurant_name=restaurantModel.getRestaurant_name();
+            editor.putString("Restaurant_name",Restaurant_name);
+            editor.commit();
             holder.Restaurant_title.setText(Restaurant_name);
             holder.Restaurant_sub_title.setText(restaurantModel.getSub_title());
             holder.Restaurant_RatingBar.setRating(restaurantModel.getRate());
@@ -217,5 +223,10 @@ public class RestaurantsFragment extends Fragment {
                 Restaurant_RatingBar = itemView.findViewById(R.id.Restaurant_RatingBar);
             }
         }
+    }
+
+    private void IntialSharedPreferences() {
+        preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        editor = preferences.edit();
     }
 }

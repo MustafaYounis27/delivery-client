@@ -149,6 +149,8 @@ public class OrderTrackingFragment extends Fragment {
                 mStepView.go(5, true);
                 // statusview.setText("Now your delivery is on your");
                 editor.putString("in order", "no");
+                //set check if data in in process or no be equal null
+                editor.putInt("has", 1);
                 editor.commit();
                 break;
         }
@@ -156,21 +158,46 @@ public class OrderTrackingFragment extends Fragment {
 
     private void GetStepFromDataBase() {
         my_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        FirebaseDatabase.getInstance().getReference().child("in process").child(my_id).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                requestOderModel = dataSnapshot.getValue(RequestOderModel.class);
-                status = requestOderModel.getStatus();
-                editor.putString("status", status);
-                editor.commit();
-                SetStep(status);
-            }
+        //check this node in in process or no
+        int has = preferences.getInt("has", 0);
+        if (has != 2) {
+            FirebaseDatabase.getInstance().getReference().child("in process").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.hasChild(my_id)) {
+                        editor.putInt("has", 2);
+                        editor.commit();
+                    } else {
+                        editor.putInt("has", 1);
+                        editor.commit();
+                    }
+                }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            }
-        });
+                }
+            });
+        }
+        //if in inprocess i will get data if no i do not get data
+        int has2 = preferences.getInt("has", 0);
+        if (has2 == 2) {
+            FirebaseDatabase.getInstance().getReference().child("in process").child(my_id).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    requestOderModel = dataSnapshot.getValue(RequestOderModel.class);
+                    status = requestOderModel.getStatus();
+                    editor.putString("status", status);
+                    editor.commit();
+                    SetStep(status);
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+        }
     }
 
     private void IntialSharedPreferences() {

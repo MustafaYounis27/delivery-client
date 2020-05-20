@@ -3,11 +3,15 @@ package com.client.metyassara.ui.map;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Toast;
 
@@ -27,11 +31,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private GoogleMap mMap;
     private double lat, longt;
     private String restaurant_name;
+    private SharedPreferences preferences;
+    private SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+        IntialSharedPreferences();
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -94,6 +101,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     public void verification(View view)
     {
+        Intent intent=new Intent(this,HomePageActivity.class);
+        //اول لما دوست علي الزار خليته يعملي intent للاكتيفتي اللي فيه الفراجمنت ويعمل save انه جي من الاكتيفتي ده وهناك هشيك لو جي من هنا هخلي يعمل ريبلاس للفراجمنت بتاع الverfication
+        editor.putString("go to vericatio", "yes");
+        editor.commit();
+        startActivity(intent);
+    }
 
+    private void IntialSharedPreferences() {
+        preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        editor = preferences.edit();
     }
 }

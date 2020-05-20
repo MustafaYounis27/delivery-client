@@ -131,10 +131,10 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
         NotificationCompat.Builder notificationBuilder =
                 new NotificationCompat.Builder(this, channelId)
-                        .setSmallIcon(R.drawable.metyassara_logo)
+                        .setSmallIcon(R.drawable.logo_notif)
                         .setContentTitle("metyassara")
                         .setContentText(messageBody)
-                        .setLargeIcon(BitmapFactory.decodeResource(this.getResources(), R.drawable.metyassara_logo))
+                        .setLargeIcon(BitmapFactory.decodeResource(this.getResources(), R.drawable.logo_notif))
                         .setAutoCancel(true)
                         .setSound(defaultSoundUri)
                         .setContentIntent(pendingIntent);

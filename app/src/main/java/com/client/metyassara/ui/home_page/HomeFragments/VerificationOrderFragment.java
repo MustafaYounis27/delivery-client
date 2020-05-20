@@ -247,7 +247,8 @@ public class VerificationOrderFragment extends Fragment {
         //get current date
         String currentDate = new SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.getDefault()).format(new Date());
 
-        RequestOderModel requestOderModel = new RequestOderModel(RestaurantsFragment.Restaurant_name, address, phone_string, describe_order_string, user_id, "", currentDate,"search",0);
+        String Restaurant_name=preferences.getString("Restaurant_name", "");
+        RequestOderModel requestOderModel = new RequestOderModel(Restaurant_name, address, phone_string, describe_order_string, user_id, "", currentDate,"search",0);
         //upload in data base
         dialog.show();
         FirebaseDatabase.getInstance().getReference().child("requests").child(user_id).setValue(requestOderModel).addOnCompleteListener(new OnCompleteListener<Void>() {
